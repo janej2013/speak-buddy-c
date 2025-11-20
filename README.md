@@ -51,17 +51,26 @@ This repository now includes a lightweight text prototype that exercises the onb
 
 Without an API key, the prototype uses deterministic fallback logic for demo/testing.
 
-### Run onboarding level check
+### Run onboarding level check (text mode)
 ```bash
 python -m speakbuddy.cli level-check
 ```
 This asks up to five questions, estimates a CEFR-like level, and stops early when confidence is high.
 
-### Run a daily practice round
+### Run a daily practice round (text mode)
 ```bash
 python -m speakbuddy.cli daily --topic "Ordering coffee"
 ```
 The daily loop asks you to answer first, then returns one focus bullet, a micro tip, and encouragement on each turn (max five turns).
+
+### Run the voice-first web demo
+```bash
+uvicorn speakbuddy.web:app --reload --port 8000
+```
+Then open http://localhost:8000/ to:
+- See the current question and coach rationale.
+- Record audio via your browser (Web Speech API) and watch the live transcript.
+- Submit either mic or typed responses to get the next LLM-generated question and a short summary when finished.
 
 ### Tests
 Run the small test suite (uses the fallback logic, no API key required):
